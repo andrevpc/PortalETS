@@ -3,6 +3,10 @@ const route = express.Router()
 const home = require('./src/controllers/home')
 route.get('/', home.pagInicialGet)
 
+// Login
+const login = require('./src/controllers/login')
+route.post('/login', login.validaUsuario)
+
 //Registro
 const cadastro = require('./src/controllers/cadastro')
 route.get('/registro', cadastro.registro)

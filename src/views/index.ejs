@@ -22,15 +22,15 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card cascading-right" style=" background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px);">
                         <div class="card-body p-5 shadow-5 text-center">
-                            <form>
+                            <form action="/login" method="post">
 
                                 <div class="form-outline mb-4">
                                     <img class="userImage" src="img/users/user.png" alt="User Icon">
-                                    <input type="text" id="userName" class="form-control" placeholder="Usuário"/>
+                                    <input type="text" name="user" id="userName" class="form-control" placeholder="Usuário"/>
                                 </div>
                 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="userPassword" class="form-control" placeholder="Senha"/>
+                                    <input name="password" type="password" id="userPassword" class="form-control" placeholder="Senha"/>
                                 </div>
                                 
                                 <div clas="d-flex justify-content-center">
