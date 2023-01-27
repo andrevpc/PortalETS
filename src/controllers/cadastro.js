@@ -18,12 +18,13 @@ module.exports = {
 
   async competenciaInsert(req, res) {
     const dados = req.body;
+    console.log(dados)
 
     await competencia.create({
       nota: dados.nota,
-      competencia: dados.competencia,
-      usuario: dados.usuario,
-      materia: dados.materia,
+      competencias: dados.competencia,
+      idUsuario: dados.usuario,
+      idMateria: dados.materia,
     });
     res.redirect("/");
   },
@@ -37,6 +38,8 @@ module.exports = {
     await conteudo.create({
       conteudo: dados.conteudo,
       pasta: pasta,
+      dia: dados.dia,
+      idMateria: dados.materia
     });
     res.redirect("/");
   },
