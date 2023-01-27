@@ -1,0 +1,6 @@
+entrar no package.json e em "scripts" colocar: "start": "nodemon server.js", , ficando assim:
+
+"scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },

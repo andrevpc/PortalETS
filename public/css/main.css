@@ -5,9 +5,12 @@ body {
   font-family: "Raleway", sans-serif;
 }
 #nav {
-  background-image: url("img/fundo.jpg");
+  background-image: url("../img/Bosch/fundo.jpg");
   background-size: cover;
   height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .userImg {
   margin: 100px 0 0 0; /* top | right | bottom | left */
