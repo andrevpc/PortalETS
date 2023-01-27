@@ -8,8 +8,6 @@ const cadastro = require('./src/controllers/cadastro')
 route.get('/registro', cadastro.registro)
 route.post('/competencia', cadastro.competenciaInsert)
 route.post('/conteudo', cadastro.conteudoInsert)
-route.post('/materia', cadastro.materiaInsert)
-route.post('/usuario', cadastro.usuarioInsert)
 
 //Multer (controle de imagens)
 const multer = require("multer");
