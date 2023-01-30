@@ -9,10 +9,14 @@ route.get('/registro', cadastro.registro)
 route.post('/competencia', cadastro.competenciaInsert)
 
 //Multer (controle de imagens)
-const multer = require("multer");
-const config = require('./src/config/multer');
-route.post('/materia', multer(config).single('foto'), cadastro.materiaInsert);
-route.post('/usuario', multer(config).single('foto'), cadastro.usuarioInsert);
-route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudoInsert);
+const multer = require("multer")
+const config = require('./src/config/multer')
+route.post('/materia', multer(config).single('foto'), cadastro.materiaInsert)
+route.post('/usuario', multer(config).single('foto'), cadastro.usuarioInsert)
+route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudoInsert)
+
+//MAIN
+const main = require('./src/controllers/main')
+route.get('/main/:id', main.main)
 
 module.exports = route

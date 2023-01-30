@@ -17,60 +17,26 @@
         </nav>
     </div>
     <div class="d-flex justify-content-center">
-        <img class="userImg" src="img/users/user.png" />
+        <img class="userImg" src="img/<%= usuarios.foto %>" />
     </div>
     <div class="container">
         <div class="row">
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/py.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">Python</h3>
-                    </div>
-                </a> </div>
-            </div>
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/devops.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">DevOps</h3>
-                    </div>
-                </a> </div>
-            </div>
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/csharp.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">C#</h3>
-                    </div>
-                </a> </div>
-            </div>
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/html.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">HTML & CSS</h3>
-                    </div>
-                </a> </div>
-            </div>
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/js.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">Java Script</h3>
-                    </div>
-                </a> </div>
-            </div>
-            <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="content"> <a href="#">
-                    <div class="content-overlay"></div> <img class="content-image" src="img/logos/pdi.png">
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title">PDI</h3>
-                    </div>
-                </a> </div>
-            </div>
+            <% for (let i=0; i<materias.length; i++) { %>
+                <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="content"> <a href="#">
+                            <div class="content-overlay"></div>
+                            <img class="content-image" id="<%= materias[i].idMateria %>"
+                                src="img/<%= materias[i].foto %>">
+                            <div class="content-details fadeIn-bottom">
+                                <h3 class="content-title">
+                                    <%= materias[i].materia %>
+                                </h3>
+                            </div>
+                        </a> </div>
+                </div>
+                <% } %>
+        </div>
     </div>
-    </div>    
 
 
 
