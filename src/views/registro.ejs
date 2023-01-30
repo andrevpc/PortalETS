@@ -72,11 +72,11 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar novo Conteudo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/conteudo" method="post">
+                <form action="/conteudo" method="post" enctype="multipart/form-data">
                     <div class="modal-body" style="display: block !important;">
                         <label for="conteudo">Conteudo</label>
                         <input style="cursor: text;width: 100%;" type="text" name="conteudo" required>
-                        <input type="file" id="arquivopasta">
+                        <input type="file" id="arquivopasta" name="arquivopasta">
                         <label for="materia">Materia</label>
                         <select style="width: 100%;" name="materia">
                             <% for (let i=0; i<materias.length; i++) { %>

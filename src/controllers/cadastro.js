@@ -35,6 +35,7 @@ module.exports = {
     if (req.file) {
       pasta = req.file.filename;
     }
+    console.log(req.file)
     await conteudo.create({
       conteudo: dados.conteudo,
       pasta: pasta,
