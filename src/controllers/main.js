@@ -13,8 +13,6 @@ module.exports = {
             raw: true,
             attributes: ['idMateria', 'materia', 'foto']
         })
-        console.log(usuarios.foto)
-        console.log(materia[1].foto)
         res.render('../views/main', {usuarios, materias})
     }
 }
