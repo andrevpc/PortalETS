@@ -11,7 +11,7 @@ module.exports = {
 
         const materias = await materia.findAll({
             raw: true,
-            attributes: ['idMateria', 'materia', 'foto']
+            attributes: ['idMateria', 'materia', 'foto', 'conteudo']
         })
         res.render('../views/main', {usuarios, materias})
     }

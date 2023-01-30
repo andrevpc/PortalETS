@@ -55,7 +55,8 @@ module.exports = {
 
     await materia.create({
       materia: dados.materia,
-      foto: foto
+      foto: foto,
+      conteudo: dados.conteudo
     });
     res.redirect("/");
   },
