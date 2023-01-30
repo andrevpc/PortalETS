@@ -39,7 +39,7 @@
                         <label for="competencia">Competencias a melhorar</label>
                         <input style="cursor: text;width: 100%;" type="text" name="competencia" required>
                         <label for="usuario">Usuario</label>
-                        <select style="width: 100%;" name="usuario" id="usuario">
+                        <select style="width: 100%;" name="usuario">
                             <% for (let i=0; i<usuarios.length; i++) { %>
                                 <option value='<%= usuarios[i].idUsuario %>'>
                                     <%= usuarios[i].nome %>
@@ -47,7 +47,7 @@
                                 <% } %>
                         </select>
                         <label for="materia">Materia</label>
-                        <select style="width: 100%;" name="materia" id="materia">
+                        <select style="width: 100%;" name="materia">
                             <% for (let i=0; i<materias.length; i++) { %>
                                 <option value='<%= materias[i].idMateria %>'>
                                     <%= materias[i].materia %>
@@ -72,14 +72,13 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar novo Conteudo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/conteudo" method="post">
+                <form action="/conteudo" method="post" enctype="multipart/form-data">
                     <div class="modal-body" style="display: block !important;">
                         <label for="conteudo">Conteudo</label>
                         <input style="cursor: text;width: 100%;" type="text" name="conteudo" required>
-                        <label for="pasta">Pasta</label>
-                        <input style="cursor: text;width: 100%;" type="text" name="pasta" required>
+                        <input type="file" id="arquivopasta" name="arquivopasta">
                         <label for="materia">Materia</label>
-                        <select style="width: 100%;" name="materia" id="materia">
+                        <select style="width: 100%;" name="materia">
                             <% for (let i=0; i<materias.length; i++) { %>
                                 <option value='<%= materias[i].idMateria %>'>
                                     <%= materias[i].materia %>
@@ -87,7 +86,7 @@
                                 <% } %>
                         </select>
                         <label for="dia">Data</label>
-                        <input style="cursor: text;width: 100%;" type="text" name="pasta" required>
+                        <input type="date" style="width: 100%;" name="dia" class="form-control">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">CADASTRAR</button>
                         </div>

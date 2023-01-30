@@ -35,8 +35,14 @@ fileMateria.addEventListener("change", () => {
   reader.readAsDataURL(fileMateria.files[0]);
   reader.onload = () => {
     photoMateria.src = reader.result;
-    console.log(reader.result);
-    console.log(photoMateria.src);
   };
 });
 
+fileMateria.addEventListener("change", () => {
+  if (fileMateria.files.length == 0) {
+    return;
+  }
+
+  let reader = new FileReader();
+  reader.readAsDataURL(fileMateria.files[0]);
+});
