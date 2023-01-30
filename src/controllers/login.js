@@ -1,15 +1,13 @@
 const { Sequelize } = require("sequelize");
 const usuario = require("../model/usuario");
+const { pagInicialGet } = require("./home");
 
 module.exports = {
-  async validaUsuario(req, res) {
-    const user = await usuario.findOne({ where : {nome : req.body.user, senha: req.body.password }});
+    async validaUsuario(req, res) {
+        console.log(req.body.userName);
+        const user = await usuario.findOne({ where : {usuario : req.body.userName, senha: req.body.password }});
 
-    if (user)
-    {
-        res.render("../views/aulas")
+        if (user)
+            res.render("../views/main/" + user.idUsuario)
     }
-    else
-        res.status(404).json({ error: "Usuário e/ou senha incorretos"});
-  }
 };

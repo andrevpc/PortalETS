@@ -1,6 +1,8 @@
 const express = require('express')
 const route = express.Router()
 const home = require('./src/controllers/home')
+
+// Main Page
 route.get('/', home.pagInicialGet)
 
 // Login

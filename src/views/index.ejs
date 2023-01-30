@@ -26,17 +26,16 @@
 
                                 <div class="form-outline mb-4">
                                     <img class="userImage" src="img/users/user.png" alt="User Icon">
-                                    <input type="text" name="user" id="userName" class="form-control" placeholder="Usuário"/>
+                                    <input type="text" name="userName" id="userName" class="form-control" placeholder="Usuário"/>
                                 </div>
                 
                                 <div class="form-outline mb-4">
                                     <input name="password" type="password" id="userPassword" class="form-control" placeholder="Senha"/>
                                 </div>
-                                
-                                <div clas="d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-dark" style="width: fit-content;margin: 0 auto;">Login</button>
+                                <label hidden for="buttonLogin" name="userWarning" id="errorLogin" style="color: rgb(231, 129, 129);">Edv ou senha incorretos</label>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" id="buttonLogin" class="btn btn-dark" style="width: fit-content;margin: 0 auto;" onclick="document.getElementById('errorLogin').hidden = false">Login</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -48,7 +47,6 @@
             <button class="adm btn btn-secondary">ADM</button>
         </form>
     </section>
-
 </body>
 
 </html>
