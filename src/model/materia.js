@@ -14,6 +14,9 @@ const materia = database.define('Materia',{
     foto: {
         type: Sequelize.STRING(50),
         allowNull: false
+    },
+    conteudo: {
+        type: Sequelize.STRING(100),
     }
 })
 

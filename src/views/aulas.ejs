@@ -5,197 +5,126 @@
     <title>Aulas</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css"
+        rel="stylesheet" />
 </head>
 
 <body style="background: #E8E8E8;">
- 
+
     <nav class="navbar"></nav>
     <div class="litHope">
         <section class="text-center text-lg-start" style="height: 100%;">
-        
+
             <div class="container-fluid">
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="profileCard p-2 mr-2">
                         <div class="d-flex align-items-center" style="color: #fff">
                             <div class="image">
-                                <img src="img/users/Pedrinho.png" class="rounded-circle" width="155" >
+                                <img src="../../img/<%= usuarios.foto %>" class="rounded-circle" width="155">
                             </div>
                             <div class="ml-3 w-100">
-                                <h4 class="mb-0 mt-0">Robertinho Cleber</h4>
-                                <img src="img/logos/csharppng.png" style="height: auto;max-width: 40px;">
-                                <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats" style="color: #4b4b4b;">
+                                <h4 class="mb-0 mt-0">
+                                    <%= usuarios.nome %>
+                                </h4>
+                                <img src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
+                                <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats"
+                                    style="color: #4b4b4b;">
                                     <div class="d-flex flex-column">
-                                        <span class="number1" style="color:#fff">27/38 | </span>
+                                        <span class="number1" style="color:#fff"><%= competencias_necessitadas.length %>/<%= conteudos_da_materia.length %> | </span>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <span class="number2" style="color:#fff">71%</span>
+                                        <span class="number2" style="color:#fff">
+                                            <%= competencias.nota * 10 %>%
+                                        </span>
                                         <span class="smLabel" style="color:#fff">Completo</span>
                                     </div>
                                 </div>
-                            </div>               
+                            </div>
                         </div>
                     </div>
                     <div class="filtros p-2" style="width: fit-content;border-radius: 10px;">
-                        <form action="submit" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                         
-                            
+                        <form action="submit" method="post" id="form-box" class="p-2 d-flex"
+                            style="width: fit-content;">
+
+
                             <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
-                                <label for="smHell" style="color: #fff;">Filtre conteudos:</label>                            
-                                <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple data-live-search="true">
-                                    <option value="linq" style="background-color: #4b4b4b;color:#fff">Linq</option>
-                                    <option value="banco" style="background-color: #4b4b4b;color:#fff">Banco de dados</option>
-                                    <option value="python" style="background-color: #4b4b4b;color:#fff">Classe Python</option>
-                                    <option value="delegado" style="background-color: #4b4b4b;color:#fff">Delegado</option>
+                                <label for="smHell" style="color: #fff;">Filtre conteudos:</label>
+                                <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple
+                                    data-live-search="true">
+                                    <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
+                                        <option value="<%= conteudos_da_materia[i] %>"
+                                            <% conteudos_da_materia.includes(conteudos_da_materia[i]) ? style="background-color: #4b4b4b; color:#fff" : style="background-color: #4b4b4b; color:rgb(255, 0, 0)" %>>
+                                            <%= conteudos_da_materia[i] %>
+                                        </option>
+                                        <% } %>
                                 </select>
-    
-                                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download" style="width: fit-content; margin: auto;">
-                     
+
+                                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block"
+                                    value="Download" style="width: fit-content; margin: auto;">
+
                             </div>
                             <div class="container justify-content-center">
                                 <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                                <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data" class="form-control">
-                                
+                                <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
+                                    class="form-control">
+
                                 <label for="dataAula2" style="color: #fff;">Data final:</label>
-                                <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2" class="form-control" placeholder="Selecione uma data">
+                                <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
+                                    class="form-control" placeholder="Selecione uma data">
                             </div>
-    
+
                         </form>
                     </div>
                 </div>
             </div>
-        
+
             <br>
-            <hr>        
-    
+            <hr>
+
+
             <div class="col-lg-12 mb-5 mb-lg-0">
-                <div id="scrollList" class="container d-flex justify-content-center" style="height: 300px;overflow-y: auto;">
-    
-                    <ul class="list-group text-white"  >
-                        <li class="list-group-item d-flex justify-content-between align-content-center mt-0">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Linq</h6>
-                                    <div class="about">
-                                        <span>22 Arquivos</span>
-                                        <span>11/01/2020</span>
+                <div id="scrollList" class="container d-flex justify-content-center"
+                    style="height: 300px;overflow-y: auto;">
+
+                    <ul class="list-group text-white">
+                            <% for (let i=0; i<conteudos.length; i++) { %>
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                    <div class="d-flex flex-row">
+                                        <img src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+                                            width="40" />
+                                        <div class="ml-2">
+                                            <h6 class="mb-0"><%= conteudos[i].conteudo %></h6>
+                                            <div class="about">
+                                                <span><%= conteudos[i].dia %></span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-            
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Delegado</h6>
-                                    <div class="about">
-                                        <span>82 Arquivos</span>
-                                        <span>29/03/2021</span>
+                                    <div class="check">
+                                        <input type="checkbox" name="a">
                                     </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-            
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Ponteiros</h6>
-                                    <div class="about">
-                                        <span>182 Arquivos</span>
-                                        <span>11/12/2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-    
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Ponteiros</h6>
-                                    <div class="about">
-                                        <span>182 Arquivos</span>
-                                        <span>11/12/2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Ponteiros</h6>
-                                    <div class="about">
-                                        <span>182 Arquivos</span>
-                                        <span>11/12/2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-content-center">
-            
-                            <div class="d-flex flex-row">
-                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                <div class="ml-2">
-                                    <h6 class="mb-0">Ponteiros</h6>
-                                    <div class="about">
-                                        <span>182 Arquivos</span>
-                                        <span>11/12/2021</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="check">
-                                <input type="checkbox" name="a">
-                            </div>
-            
-                        </li>
-                        
+
+                                </li>
+                                <% } %>
+
                     </ul>
-            
+
                 </div>
             </div>
-        
-                </div>
-            </div>
-        </section>
+
+    </div>
+    </div>
+    </section>
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#example-getting-started').multiselect();
         });
     </script>

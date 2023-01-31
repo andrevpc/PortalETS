@@ -25,4 +25,8 @@ route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudo
 const main = require('./src/controllers/main')
 route.get('/main/:id', main.main)
 
+//AULAS
+const aulas = require('./src/controllers/aulas')
+route.get('/aulas/:id/:materia', aulas.aulas)
+
 module.exports = route
