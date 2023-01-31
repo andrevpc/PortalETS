@@ -29,14 +29,16 @@
                                 <img src="../../img/<%= usuarios.foto %>" class="rounded-circle" width="155">
                             </div>
                             <div class="ml-3 w-100">
-                                <h4 class="mb-0 mt-0">
+                                <h4 class="mb-2 mt-0">
                                     <%= usuarios.nome %>
                                 </h4>
-                                <img src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
-                                <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats"
+                                <img class="mb-2 rounded" src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
+                                <div class="p-2 mb-2 bg-primary d-flex justify-content-center rounded text-white stats"
                                     style="color: #4b4b4b;">
                                     <div class="d-flex flex-column">
-                                        <span class="number1" style="color:#fff"><%= competencias_necessitadas.length %>/<%= conteudos_da_materia.length %> | </span>
+                                        <span class="number1" style="color:#fff">
+                                            <%= competencias_necessitadas.length %>/<%= conteudos_da_materia.length %> |
+                                        </span>
                                     </div>
                                     <div class="d-flex flex-column">
                                         <span class="number2" style="color:#fff">
@@ -49,37 +51,36 @@
                         </div>
                     </div>
                     <div class="filtros p-2" style="width: fit-content;border-radius: 10px;">
-                        <form action="submit" method="post" id="form-box" class="p-2 d-flex"
-                            style="width: fit-content;">
 
 
-                            <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
-                                <label for="smHell" style="color: #fff;">Filtre conteudos:</label>
-                                <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple
-                                    data-live-search="true">
+                        <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
+                            <label for="smHell" style="color: #fff;">Filtro de conteudos:</label>
+                            <form action="/aulas/ <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                                <select id="smHell" class="selectpicker" title="Nada Selecionado" multiple
+                                    data-live-search="true" onchange="this.form.submit()" name="filtro_conteudo">
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
-                                        <option value="<%= conteudos_da_materia[i] %>"
-                                            <% conteudos_da_materia.includes(conteudos_da_materia[i]) ? style="background-color: #4b4b4b; color:#fff" : style="background-color: #4b4b4b; color:rgb(255, 0, 0)" %>>
-                                            <%= conteudos_da_materia[i] %>
+                                        <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
+                                            style=<%=!(competencias_necessitadas.includes(conteudos_da_materia[i]))
+                                            ? 'color:#fff' : 'color:#DC143C' %>>
+                                            <b>
+                                                <%= conteudos_da_materia[i] %>
+                                            </b>
                                         </option>
                                         <% } %>
                                 </select>
+                            </form>
 
-                                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block"
-                                    value="Download" style="width: fit-content; margin: auto;">
+                        </div>
+                        <div class="container justify-content-center mb-2">
+                            <label for="dataAula" style="color: #fff;">Data inicial:</label>
+                            <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
+                                class="form-control">
 
-                            </div>
-                            <div class="container justify-content-center">
-                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                                <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
-                                    class="form-control">
+                            <label for="dataAula2" style="color: #fff;">Data final:</label>
+                            <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
+                                class="form-control" placeholder="Selecione uma data">
+                        </div>
 
-                                <label for="dataAula2" style="color: #fff;">Data final:</label>
-                                <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
-                                    class="form-control" placeholder="Selecione uma data">
-                            </div>
-
-                        </form>
                     </div>
                 </div>
             </div>
@@ -89,29 +90,35 @@
 
 
             <div class="col-lg-12 mb-5 mb-lg-0">
+
+                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
+                    style="width: fit-content; margin-left: 80vh;">
                 <div id="scrollList" class="container d-flex justify-content-center"
                     style="height: 300px;overflow-y: auto;">
 
                     <ul class="list-group text-white">
-                            <% for (let i=0; i<conteudos.length; i++) { %>
-                                <li class="list-group-item d-flex justify-content-between align-content-center">
+                        <% for (let i=0; i<conteudos.length; i++) { %>
+                            <li class="list-group-item d-flex justify-content-between align-content-center">
 
-                                    <div class="d-flex flex-row">
-                                        <img src="https://img.icons8.com/color/100/000000/folder-invoices.png"
-                                            width="40" />
-                                        <div class="ml-2">
-                                            <h6 class="mb-0"><%= conteudos[i].conteudo %></h6>
-                                            <div class="about">
-                                                <span><%= conteudos[i].dia %></span>
-                                            </div>
+                                <div class="d-flex flex-row">
+                                    <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
+                                    <div class="ml-2">
+                                        <h6 class="mb-0">
+                                            <%= conteudos[i].conteudo %>
+                                        </h6>
+                                        <div class="about">
+                                            <span>
+                                                <%= conteudos[i].dia %>
+                                            </span>
                                         </div>
                                     </div>
-                                    <div class="check">
-                                        <input type="checkbox" name="a">
-                                    </div>
+                                </div>
+                                <div class="check">
+                                    <input type="checkbox" name="a">
+                                </div>
 
-                                </li>
-                                <% } %>
+                            </li>
+                            <% } %>
 
                     </ul>
 
