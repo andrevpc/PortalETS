@@ -21,12 +21,8 @@ route.post('/materia', multer(config).single('foto'), cadastro.materiaInsert)
 route.post('/usuario', multer(config).single('foto'), cadastro.usuarioInsert)
 route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudoInsert)
 
-//MAIN
-const main = require('./src/controllers/main')
-route.get('/main/:id', main.main)
-
 //AULAS
 const aulas = require('./src/controllers/aulas')
-route.get('/aulas/:id/:materia', aulas.aulas)
+route.get('/aulas/:materia', aulas.aulas)
 
 module.exports = route

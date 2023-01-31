@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
-const usuario = require("../model/usuario");
 const { pagInicialGet } = require("./home");
+const usuario = require("../model/usuario");
+const materia = require("../model/materia");
 
 module.exports = {
     async validaUsuario(req, res) {
@@ -8,8 +9,20 @@ module.exports = {
         const user = await usuario.findOne({ where : {usuario : req.body.userName, senha: req.body.password }});
 
         if (user)
-            res.redirect("/main/" + user.idUsuario)
+        {
+            const usuarios = await usuario.findByPk(user.idUsuario, {
+                raw: true,
+                attributes: ['idUsuario', 'nome', 'foto', 'isAdm']
+            })
+    
+            const materias = await materia.findAll({
+                raw: true,
+                attributes: ['idMateria', 'materia', 'foto', 'conteudo']
+            })
+            res.cookie('userId', user.idUsuario)
+            res.render('../views/main', {usuarios, materias})
+        }
         else    
-            res.render("./index", {error: true});
+            res.render("./index", { error: true });
     }
 };
