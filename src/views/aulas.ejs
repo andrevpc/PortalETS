@@ -59,7 +59,7 @@
                                     data-live-search="true">
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                         <option value="<%= conteudos_da_materia[i] %>"
-                                            style="background-color: #4b4b4b;color:#fff">
+                                            <% conteudos_da_materia.includes(conteudos_da_materia[i]) ? style="background-color: #4b4b4b; color:#fff" : style="background-color: #4b4b4b; color:rgb(255, 0, 0)" %>>
                                             <%= conteudos_da_materia[i] %>
                                         </option>
                                         <% } %>

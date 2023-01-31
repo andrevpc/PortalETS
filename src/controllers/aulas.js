@@ -39,6 +39,7 @@ module.exports = {
         console.log(competencias.competencias)
         console.log(materias.conteudo)
         const conteudos_da_materia = materias.conteudo.split(',')
+        console.log(conteudos_da_materia.includes(conteudos_da_materia[1]))
 
         res.render('../views/aulas', {usuarios, materias, competencias, conteudos, competencias_necessitadas, conteudos_da_materia})
     }
