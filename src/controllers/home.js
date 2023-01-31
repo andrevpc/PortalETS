@@ -5,6 +5,6 @@ const usuario = require('../model/usuario')
 
 module.exports = {
     async pagInicialGet(req, res){
-    res.render('../views/index')
+    res.render('../views/index', {error: false})
     }
     }

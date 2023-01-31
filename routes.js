@@ -7,7 +7,7 @@ route.get('/', home.pagInicialGet)
 
 // Login
 const login = require('./src/controllers/login')
-route.get('/login', login.validaUsuario)
+route.post('/login', login.validaUsuario)
 
 //Registro
 const cadastro = require('./src/controllers/cadastro')

@@ -46,3 +46,4 @@ fileMateria.addEventListener("change", () => {
   let reader = new FileReader();
   reader.readAsDataURL(fileMateria.files[0]);
 });
+

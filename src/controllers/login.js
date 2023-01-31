@@ -5,16 +5,11 @@ const { pagInicialGet } = require("./home");
 module.exports = {
     async validaUsuario(req, res) {
         
-        const user = await usuario.findOne({ attributes: ["idUsuario"], where : {usuario : req.query.userName, senha: req.query.password }});
-
-        console.log(user.idUsuario)
-        console.log(user)
-
-        const page = "/main/" + user.idUsuario;
-
-        console.log(page)
+        const user = await usuario.findOne({ where : {usuario : req.body.userName, senha: req.body.password }});
 
         if (user)
-            res.redirect(page)
+            res.redirect("/main/" + user.idUsuario)
+        else    
+            res.render("./index", {error: true});
     }
 };

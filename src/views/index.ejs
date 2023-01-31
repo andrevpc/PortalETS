@@ -22,24 +22,19 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card cascading-right" style=" background: hsla(0, 0%, 100%, 0.55); backdrop-filter: blur(30px);">
                         <div class="card-body p-5 shadow-5 text-center">
-                            <form action="/login" method="get">
+                            <form action="/login" method="post">
 
                                 <div class="form-outline mb-4">
-<<<<<<< HEAD
                                     <img class="userImage" src="img/users/user.png" alt="User Icon">
                                     <input type="text" name="userName" id="userName" class="form-control" placeholder="Usuário"/>
-=======
-                                    <img class="userImage" src="img/user.png" alt="User Icon">
-                                    <input type="text" id="userName" class="form-control" placeholder="Usuário"/>
->>>>>>> 37504a65e4c9ff0121d1139e9f409df1b3c48566
                                 </div>
                 
                                 <div class="form-outline mb-4">
                                     <input name="password" type="password" id="userPassword" class="form-control" placeholder="Senha"/>
                                 </div>
-                                <label hidden for="buttonLogin" name="userWarning" id="errorLogin" style="color: rgb(231, 129, 129);">Edv ou senha incorretos</label>
+                                <label <%= !error ? "hidden" : ""%> for="buttonLogin" name="userWarning" id="errorLogin" style="color: rgb(231, 129, 129);">Edv ou senha incorretos</label>
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit" id="buttonLogin" class="btn btn-dark" style="width: fit-content;margin: 0 auto;" onclick="document.getElementById('errorLogin').hidden = false">Login</button>
+                                    <button type="submit" id="buttonLogin" class="btn btn-dark" style="width: fit-content;margin: 0 auto;">Login</button>
                                 </div>
                             </form>
                         </div>
