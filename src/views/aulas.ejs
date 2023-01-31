@@ -61,7 +61,7 @@
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                         <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
                                             style=<%=!(competencias_necessitadas.includes(conteudos_da_materia[i]))
-                                            ? 'color:#fff' : 'color:#DC143C' %>>
+                                            ? 'color:#fff' : 'color:#DC143C' %> <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos_da_materia[i])) ? "selected" : ""):"" %>>
                                             <b>
                                                 <%= conteudos_da_materia[i] %>
                                             </b>
@@ -98,26 +98,28 @@
 
                     <ul class="list-group text-white">
                         <% for (let i=0; i<conteudos.length; i++) { %>
-                            <li class="list-group-item d-flex justify-content-between align-content-center">
-
-                                <div class="d-flex flex-row">
-                                    <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                    <div class="ml-2">
-                                        <h6 class="mb-0">
-                                            <%= conteudos[i].conteudo %>
-                                        </h6>
-                                        <div class="about">
-                                            <span>
-                                                <%= conteudos[i].dia %>
-                                            </span>
+                            <div <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos[i].conteudo)) ? "" : "hidden"):"" %> >
+                                <li class="list-group-item d-flex justify-content-between align-content-center">
+    
+                                    <div class="d-flex flex-row">
+                                        <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
+                                        <div class="ml-2">
+                                            <h6 class="mb-0">
+                                                <%= conteudos[i].conteudo %>
+                                            </h6>
+                                            <div class="about">
+                                                <span>
+                                                    <%= conteudos[i].dia %>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="check">
-                                    <input type="checkbox" name="a">
-                                </div>
-
-                            </li>
+                                    <div class="check">
+                                        <input type="checkbox" name="a">
+                                    </div>
+    
+                                </li>
+                            </div>
                             <% } %>
 
                     </ul>

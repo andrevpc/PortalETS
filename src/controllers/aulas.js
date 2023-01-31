@@ -36,14 +36,11 @@ module.exports = {
         })
 
         const filtro = req.body.filtro_conteudo
-
-        console.log("AAAAAAAAAAAAAAAAAAA")
-        console.log(filtro)
         
         const competencias_necessitadas = competencias.competencias.split(',')
         const conteudos_da_materia = materias.conteudo.split(',')
 
-        res.render('../views/aulas', {usuarios, materias, competencias, conteudos, competencias_necessitadas, conteudos_da_materia})
+        res.render('../views/aulas', {usuarios, materias, competencias, conteudos, competencias_necessitadas, conteudos_da_materia, filtro})
     },
     
     async aulasGet(req, res){
@@ -54,8 +51,6 @@ module.exports = {
             raw: true,
             attributes: ['idUsuario', 'nome', 'foto']
         })
-        console.log(parametro)
-        console.log(parametro2)
         const materias = await materia.findByPk(parametro2, {
             raw: true,
             attributes: ['idMateria', 'materia', 'foto', 'conteudo']
@@ -81,12 +76,12 @@ module.exports = {
 
         const filtro = req.body.filtro_conteudo
 
-        console.log("AAAAAAAAAAAAAAAAAAA")
-        console.log(filtro)
         
         const competencias_necessitadas = competencias.competencias.split(',')
         const conteudos_da_materia = materias.conteudo.split(',')
+        console.log(filtro)
+        console.log(conteudos[0])
 
-        res.render('../views/aulas', {usuarios, materias, competencias, conteudos, competencias_necessitadas, conteudos_da_materia})
+        res.render('../views/aulas', {usuarios, materias, competencias, conteudos, competencias_necessitadas, conteudos_da_materia, filtro})
     }
-    }
+}
