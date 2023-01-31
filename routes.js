@@ -28,5 +28,6 @@ route.get('/main/:id', main.main)
 //AULAS
 const aulas = require('./src/controllers/aulas')
 route.get('/aulas/:id/:materia', aulas.aulas)
+route.post('/aulas/:id/:materia', aulas.aulasGet)
 
 module.exports = route
