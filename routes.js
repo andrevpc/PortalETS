@@ -7,7 +7,7 @@ route.get('/', home.pagInicialGet)
 
 // Login
 const login = require('./src/controllers/login')
-route.get('/login', login.validaUsuario)
+route.post('/login', login.validaUsuario)
 
 //Registro
 const cadastro = require('./src/controllers/cadastro')
@@ -20,10 +20,6 @@ const config = require('./src/config/multer')
 route.post('/materia', multer(config).single('foto'), cadastro.materiaInsert)
 route.post('/usuario', multer(config).single('foto'), cadastro.usuarioInsert)
 route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudoInsert)
-
-//MAIN
-const main = require('./src/controllers/main')
-route.get('/main/:id', main.main)
 
 //AULAS
 const aulas = require('./src/controllers/aulas')

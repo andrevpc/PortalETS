@@ -54,17 +54,20 @@
 
 
                         <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post"
+                                id="form-box" class="p-2 d-flex" style="width: fit-content;">
                                 <label for="smHell" style="color: #fff;">Filtre conteudos:</label>
                                 <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple
                                     data-live-search="true" onchange="this.form.submit()" name="filtro_conteudo">
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                         <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
                                             style=<%=!(competencias_necessitadas.includes(conteudos_da_materia[i]))
-                                            ? 'color:#fff' : 'color:#DC143C' %> <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos_da_materia[i])) ? "selected" : ""):"" %>>
-                                            <b>
-                                                <%= conteudos_da_materia[i] %>
-                                            </b>
+                                            ? 'color:#fff' : 'color:#DC143C' %>
+                                            <%= (typeof filtro !=='undefined'
+                                                )?((filtro.includes(conteudos_da_materia[i])) ? "selected" : "" ):"" %>>
+                                                <b>
+                                                    <%= conteudos_da_materia[i] %>
+                                                </b>
                                         </option>
                                         <% } %>
                                 </select>
@@ -72,14 +75,20 @@
 
                         </div>
                         <div class="container justify-content-center">
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post"
+                                id="form-box" class="p-2 d-flex" style="width: fit-content;">
                                 <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                                <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
-                                    class="form-control">
+                                <input onchange="this.form.submit()" id="dataAula" type="date"
+                                    style="width: fit-content; margin:auto;" name="data" class="form-control"
+                                    value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
                             </form>
-                            <label for="dataAula2" style="color: #fff;">Data final:</label>
-                            <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
-                                class="form-control" placeholder="Selecione uma data">
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post"
+                                id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                                <label for="dataAula2" style="color: #fff;">Data final:</label>
+                                <input onchange="this.form.submit()" id="dataAula2" type="date"
+                                    style="width: fit-content; margin:auto;" name="data2" class="form-control"
+                                    value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
+                            </form>
                         </div>
 
                     </div>
@@ -99,27 +108,40 @@
 
                     <ul class="list-group text-white">
                         <% for (let i=0; i<conteudos.length; i++) { %>
-                            <div <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos[i].conteudo)) ? "" : "hidden"):"" %> >
-                                <li class="list-group-item d-flex justify-content-between align-content-center">
-    
-                                    <div class="d-flex flex-row">
-                                        <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                        <div class="ml-2">
-                                            <h6 class="mb-0">
-                                                <%= conteudos[i].conteudo %>
-                                            </h6>
-                                            <div class="about">
-                                                <span>
-                                                    <%= conteudos[i].dia %>
-                                                </span>
+                            <div <%=(typeof filtro !=='undefined' )?((filtro.includes(conteudos[i].conteudo)) ? ""
+                                : "hidden" ):"" %>
+                                <%= (typeof filtro_dia0 !=='undefined' )?((new Date(filtro_dia0 + " GMT" ).getTime()
+                                    <=new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
+                                    + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden" ):"" %>
+                                    <%= (typeof filtro_dia !=='undefined' )?((new Date(filtro_dia + " GMT" ).getTime()>=
+                                        new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
+                                        + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden" ):"" %>>
+                                        <li class="list-group-item d-flex justify-content-between align-content-center">
+
+                                            <div class="d-flex flex-row">
+                                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+                                                    width="40" />
+                                                <div class="ml-2">
+                                                    <h6 class="mb-0">
+                                                        <%= conteudos[i].conteudo %>
+                                                    </h6>
+                                                    <div class="about">
+                                                        <span>
+                                                            <% var dateObj = new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
+                                                                + " GMT" ).getDate() + 1))) %>
+                                                            <% var month = dateObj.getUTCMonth() + 1; %>
+                                                            <% var day = dateObj.getUTCDate(); %>
+                                                            <% var year = dateObj.getUTCFullYear(); %>
+                                                            <%= day + "/" + month + "/" + year; %>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="check">
-                                        <input type="checkbox" name="a">
-                                    </div>
-    
-                                </li>
+                                            <div class="check">
+                                                <input type="checkbox" name="a">
+                                            </div>
+
+                                        </li>
                             </div>
                             <% } %>
 
