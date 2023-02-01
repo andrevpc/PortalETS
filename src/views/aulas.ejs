@@ -80,28 +80,16 @@
 
                         </div>
                         <div class="container justify-content-center">
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post"
-                                id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                                <input onchange="this.form.submit()" id="dataAula" type="date"
-                                    style="width: fit-content; margin:auto;" name="data" class="form-control"
-                                    value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
-                            </form>
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post"
-                                id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                                <label for="dataAula2" style="color: #fff;">Data final:</label>
-                                <input onchange="this.form.submit()" id="dataAula2" type="date"
-                                    style="width: fit-content; margin:auto;" name="data2" class="form-control"
-                                    value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
-                            </form>
-                            <!-- <label for="dataAula" style="color: #fff;">Data inicial:</label>
                             <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
                                 <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
-                                    class="form-control">
+                                    class="form-control" value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
                             </form>
-                            <label for="dataAula2" style="color: #fff;">Data final:</label>
-                            <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
-                                class="form-control mb-2" placeholder="Selecione uma data"> -->
+                            <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                <label for="dataAula2" style="color: #fff;">Data final:</label>
+                                <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
+                                class="form-control mb-2" placeholder="Selecione uma data" value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
+                            </form>
                         </div>
 
                     </div>
@@ -112,12 +100,12 @@
 
             <div class="col-lg-12 mb-5 mb-lg-0">
 
-                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
-                    style="width: fit-content; margin: auto;">
-                <div id="scrollList" class="container d-flex justify-content-center"
-                    style="height: 300px;overflow-y: auto;">
+                <input onclick="download()" type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
+                        style="width: fit-content; margin-left: 80vh;">
+                    <div id="scrollList" class="container d-flex justify-content-center"
+                        style="height: 250px;overflow-y: auto;">
 
-                    <ul class="list-group text-white">
+                    <ul class="list-group text-white" id="listaConteudos">
                         <% for (let i=0; i<conteudos.length; i++) { %>
                             <div <%=(typeof filtro !=='undefined' )?((filtro.includes(conteudos[i].conteudo)) ? ""
                                 : "hidden" ):"" %>
@@ -128,10 +116,9 @@
                                         new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
                                         + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden" ):"" %>>
                                         <li class="list-group-item d-flex justify-content-between align-content-center">
-
+                                            <a id="fileFromElement" href="../../img/<%= conteudos[i].pasta %>" download></a>
                                             <div class="d-flex flex-row">
-                                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png"
-                                                    width="40" />
+                                                <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
                                                 <div class="ml-2">
                                                     <h6 class="mb-0">
                                                         <%= conteudos[i].conteudo %>
@@ -149,7 +136,7 @@
                                                 </div>
                                             </div>
                                             <div class="check">
-                                                <input type="checkbox" name="a">
+                                                <input type="checkbox" class="checkboxInput" name="a">
                                             </div>
 
                                         </li>
@@ -159,40 +146,6 @@
                     </ul>
 
                 </div>
-                    <!-- <input onclick="download()" type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
-                        style="width: fit-content; margin-left: 80vh;">
-                    <div id="scrollList" class="container d-flex justify-content-center"
-                        style="height: 250px;overflow-y: auto;">
-    
-                        <ul class="list-group text-white" id="listaConteudos">
-                            <% for (let i=0; i<conteudos.length; i++) { %>
-                                <div <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos[i].conteudo)) ? "" : "hidden"):"" %> >
-                                    <li class="list-group-item d-flex justify-content-between align-content-center">
-                                        <a id="fileFromElement" href="../../img/<%= conteudos[i].pasta %>" download></a>
-                                        <div class="d-flex flex-row">
-                                            <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                            <div class="ml-2">
-                                                <h6 class="mb-0">
-                                                    <%= conteudos[i].conteudo %>
-                                                </h6>
-                                                <div class="about">
-                                                    <span>
-                                                        <%= conteudos[i].dia %>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="check">
-                                            <input type="checkbox" class="checkboxInput" name="a">
-                                        </div>
-        
-                                    </li>
-                                </div>
-                                <% } %>
-    
-                        </ul>
-    
-                    </div> -->
             </div>
     </div>
     </div>
