@@ -80,14 +80,14 @@
 
                         </div>
                         <div class="container justify-content-center">
+                            <label for="dataAula" style="color: #fff;">Data inicial:</label>
                             <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
-                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
                                 <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
                                     class="form-control" value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
                             </form>
+                            <label for="dataAula2" style="color: #fff;">Data final:</label>
                             <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
-                                <label for="dataAula2" style="color: #fff;">Data final:</label>
-                                <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
+                                <input onchange="this.form.submit()" id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
                                 class="form-control mb-2" placeholder="Selecione uma data" value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
                             </form>
                         </div>
