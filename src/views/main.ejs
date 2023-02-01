@@ -26,7 +26,7 @@
             <% for (let i=0; i<materias.length; i++) { %>
                        <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="content">
-                            <a href="/aulas/<%= usuarios.idUsuario %> / <%= materias[i].idMateria %>" method="get">
+                            <a href="/aulas/ <%= materias[i].idMateria %>" method="get">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" id="<%= materias[i].idMateria %>"
                                     src="../img/<%= materias[i].foto %>">
@@ -51,6 +51,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>

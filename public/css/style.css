@@ -117,10 +117,6 @@ input[type="checkbox"]:checked + .check {
   text-align: center;
 }
 
-.container-fluid {
-  padding-top: 5vh;
-}
-
 .stats {
   background: #525252 !important;
   color: #000 !important;

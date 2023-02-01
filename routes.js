@@ -9,21 +9,25 @@ route.get('/', home.pagInicialGet)
 const login = require('./src/controllers/login')
 route.post('/login', login.validaUsuario)
 
-//Registro
+// Voltar
+const voltar = require('./src/controllers/voltar')
+route.post('/return', voltar.retorna)
+
+// Registro
 const cadastro = require('./src/controllers/cadastro')
 route.get('/registro', cadastro.registro)
 route.post('/competencia', cadastro.competenciaInsert)
 
-//Multer (controle de imagens)
+// Multer (controle de imagens)
 const multer = require("multer")
 const config = require('./src/config/multer')
 route.post('/materia', multer(config).single('foto'), cadastro.materiaInsert)
 route.post('/usuario', multer(config).single('foto'), cadastro.usuarioInsert)
 route.post('/conteudo', multer(config).single('arquivopasta'), cadastro.conteudoInsert)
 
-//AULAS
+// AULAS
 const aulas = require('./src/controllers/aulas')
-route.get('/aulas/:id/:materia', aulas.aulas)
-route.post('/aulas/:id/:materia', aulas.aulasGet)
+route.get('/aulas/:materia', aulas.aulas)
+route.post('/aulas/:materia', aulas.aulasPost)
 
 module.exports = route
