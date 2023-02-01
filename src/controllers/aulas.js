@@ -75,6 +75,7 @@ module.exports = {
         })
 
         const filtro = req.body.filtro_conteudo
+        const filtro_dia0 = req.body.data
 
         
         const competencias_necessitadas = competencias.competencias.split(',')

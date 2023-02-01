@@ -72,10 +72,11 @@
 
                         </div>
                         <div class="container justify-content-center">
-                            <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                            <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
-                                class="form-control">
-
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
+                                <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
+                                    class="form-control">
+                            </form>
                             <label for="dataAula2" style="color: #fff;">Data final:</label>
                             <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
                                 class="form-control" placeholder="Selecione uma data">
