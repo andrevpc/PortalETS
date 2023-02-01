@@ -5,6 +5,7 @@ const usuario = require("../model/usuario");
 
 module.exports = {
   async registro(req, res) {
+    
     const usuarios = await usuario.findAll({
       raw: true,
       attributes: ["idUsuario", "nome", "foto", "isAdm"],
@@ -26,7 +27,7 @@ module.exports = {
       idUsuario: dados.usuario,
       idMateria: dados.materia,
     });
-    res.redirect("/");
+    res.redirect("/registro");
   },
 
   async conteudoInsert(req, res) {
@@ -42,7 +43,7 @@ module.exports = {
       dia: dados.dia,
       idMateria: dados.materia
     });
-    res.redirect("/");
+    res.redirect("/registro");
   },
 
   async materiaInsert(req, res) {
@@ -58,7 +59,7 @@ module.exports = {
       foto: foto,
       conteudo: dados.conteudo
     });
-    res.redirect("/");
+    res.redirect("/registro");
   },
 
   async usuarioInsert(req, res) {
@@ -75,6 +76,6 @@ module.exports = {
       senha: dados.senha,
       isAdm: dados.isAdm,
     });
-    res.redirect("/");
+    res.redirect("/registro");
   },
 };

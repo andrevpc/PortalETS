@@ -17,11 +17,17 @@
 
 <body style="background: #E8E8E8;">
 
-    <nav class="navbar"></nav>
+    <div id="nav">
+        <nav class="navbar">
+            <form action="/return" method="post" style="margin: auto;">
+                <button type="submit" class="btn btn-outline-light font-weight-bold"><b>Menu</b></button>
+            </form>
+        </nav>
+    </div>
     <div class="litHope">
         <section class="text-center text-lg-start" style="height: 100%;">
 
-            <div class="container-fluid">
+            <div class="container-fluid mt-2">
                 <div class="d-flex justify-content-center align-items-center">
                     <div class="profileCard p-2 mr-2">
                         <div class="d-flex align-items-center" style="color: #fff">
@@ -29,10 +35,10 @@
                                 <img src="../../img/<%= usuarios.foto %>" class="rounded-circle" width="155">
                             </div>
                             <div class="ml-3 w-100">
-                                <h4 class="mb-0 mt-0">
+                                <h4 class="mb-2 mt-0">
                                     <%= usuarios.nome %>
                                 </h4>
-                                <img src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
+                                <img class="mb-2 rounded" src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
                                 <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats"
                                     style="color: #4b4b4b;">
                                     <div class="d-flex flex-column">
@@ -44,7 +50,7 @@
                                         <span class="number2" style="color:#fff">
                                             <%= competencias.nota * 10 %>%
                                         </span>
-                                        <span class="smLabel" style="color:#fff">Completo</span>
+                                        <span class="smLabel" style="color:#fff">Aproveitamento</span>
                                     </div>
                                 </div>
                             </div>
@@ -54,9 +60,9 @@
 
 
                         <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                                <label for="smHell" style="color: #fff;">Filtre conteudos:</label>
-                                <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple
+                            <label for="smHell" style="color: #fff;">Filtro de conteudos:</label>
+                            <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                <select id="smHell" class="selectpicker mb-0" title="Nada Selecionado" multiple
                                     data-live-search="true" onchange="this.form.submit()" name="filtro_conteudo">
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                         <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
@@ -72,62 +78,58 @@
 
                         </div>
                         <div class="container justify-content-center">
-                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
+                            <label for="dataAula" style="color: #fff;">Data inicial:</label>
+                            <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
                                 <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
                                     class="form-control">
                             </form>
                             <label for="dataAula2" style="color: #fff;">Data final:</label>
                             <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
-                                class="form-control" placeholder="Selecione uma data">
+                                class="form-control mb-2" placeholder="Selecione uma data">
                         </div>
 
                     </div>
                 </div>
             </div>
 
-            <br>
             <hr>
 
-
             <div class="col-lg-12 mb-5 mb-lg-0">
-
-                <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
-                    style="width: fit-content; margin: auto;">
-                <div id="scrollList" class="container d-flex justify-content-center"
-                    style="height: 300px;overflow-y: auto;">
-
-                    <ul class="list-group text-white">
-                        <% for (let i=0; i<conteudos.length; i++) { %>
-                            <div <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos[i].conteudo)) ? "" : "hidden"):"" %> >
-                                <li class="list-group-item d-flex justify-content-between align-content-center">
+                    <input onclick="download()" type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
+                        style="width: fit-content; margin-left: 80vh;">
+                    <div id="scrollList" class="container d-flex justify-content-center"
+                        style="height: 250px;overflow-y: auto;">
     
-                                    <div class="d-flex flex-row">
-                                        <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-                                        <div class="ml-2">
-                                            <h6 class="mb-0">
-                                                <%= conteudos[i].conteudo %>
-                                            </h6>
-                                            <div class="about">
-                                                <span>
-                                                    <%= conteudos[i].dia %>
-                                                </span>
+                        <ul class="list-group text-white" id="listaConteudos">
+                            <% for (let i=0; i<conteudos.length; i++) { %>
+                                <div <%= (typeof filtro !== 'undefined')?((filtro.includes(conteudos[i].conteudo)) ? "" : "hidden"):"" %> >
+                                    <li class="list-group-item d-flex justify-content-between align-content-center">
+                                        <a id="fileFromElement" href="../../img/<%= conteudos[i].pasta %>" download></a>
+                                        <div class="d-flex flex-row">
+                                            <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
+                                            <div class="ml-2">
+                                                <h6 class="mb-0">
+                                                    <%= conteudos[i].conteudo %>
+                                                </h6>
+                                                <div class="about">
+                                                    <span>
+                                                        <%= conteudos[i].dia %>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="check">
-                                        <input type="checkbox" name="a">
-                                    </div>
+                                        <div class="check">
+                                            <input type="checkbox" class="checkboxInput" name="a">
+                                        </div>
+        
+                                    </li>
+                                </div>
+                                <% } %>
     
-                                </li>
-                            </div>
-                            <% } %>
-
-                    </ul>
-
-                </div>
+                        </ul>
+    
+                    </div>
             </div>
-
     </div>
     </div>
     </section>
@@ -137,6 +139,28 @@
         $(document).ready(function () {
             $('#example-getting-started').multiselect();
         });
+
+        function download()
+        {
+            var allInputs = document.querySelectorAll(".checkboxInput");
+            var allFiles = document.querySelectorAll("a");
+            var input = []; 
+            var file = [];
+
+            input.length = allInputs.length; 
+            file.length = input.length;
+
+            for(var i = 0; i < allInputs.length; i++){
+                input[i] = allInputs[i]; 
+                file[i] = allFiles[i];
+
+                if (input[i].checked)
+                {
+                    file[i].click()
+                }
+            }
+
+        }
     </script>
 
 </body>

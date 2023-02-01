@@ -11,15 +11,21 @@
 
 <body style="background: #E8E8E8;">
  
-    <nav class="navbar"></nav>
+    <div id="nav">
+        <nav class="navbar">
+            <form action="/return" method="post" style="margin: auto;">
+                <button type="submit" class="btn btn-outline-light font-weight-bold"><b>Menu</b></button>
+            </form>
+        </nav>
+    </div>
     <div class="container d-flex justify-content-center align-items-center" style="width: 90%;height: 90%">
-        <button class="competencia btn btn-secondary" data-bs-toggle="modal" data-bs-target="#competencia"
+        <button class="competencia btn btn-dark" data-bs-toggle="modal" data-bs-target="#competencia"
         style="cursor: pointer;margin: 10px !important;">Competencia</button>
-        <button class="conteudo btn btn-secondary" data-bs-toggle="modal" data-bs-target="#conteudo"
+        <button class="conteudo btn btn-dark" data-bs-toggle="modal" data-bs-target="#conteudo"
         style="cursor: pointer;margin: 10px !important;">Conteudo</button>
-        <button class="materia btn btn-secondary" data-bs-toggle="modal" data-bs-target="#materia"
+        <button class="materia btn btn-dark" data-bs-toggle="modal" data-bs-target="#materia"
         style="cursor: pointer;margin: 10px !important;">Materia</button>
-        <button class="usuario btn btn-secondary" data-bs-toggle="modal" data-bs-target="#usuario"
+        <button class="usuario btn btn-dark" data-bs-toggle="modal" data-bs-target="#usuario"
         style="cursor: pointer;margin: 10px !important;">Usuario</button>
     </div>
 
