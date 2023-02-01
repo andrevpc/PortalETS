@@ -29,11 +29,11 @@
                                 <img src="../../img/<%= usuarios.foto %>" class="rounded-circle" width="155">
                             </div>
                             <div class="ml-3 w-100">
-                                <h4 class="mb-2 mt-0">
+                                <h4 class="mb-0 mt-0">
                                     <%= usuarios.nome %>
                                 </h4>
-                                <img class="mb-2 rounded" src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
-                                <div class="p-2 mb-2 bg-primary d-flex justify-content-center rounded text-white stats"
+                                <img src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
+                                <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats"
                                     style="color: #4b4b4b;">
                                     <div class="d-flex flex-column">
                                         <span class="number1" style="color:#fff">
@@ -54,9 +54,9 @@
 
 
                         <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
-                            <label for="smHell" style="color: #fff;">Filtro de conteudos:</label>
-                            <form action="/aulas/<%= materias.idMateria %>" method="get" id="form-box" class="p-2 d-flex" style="width: fit-content;">
-                                <select id="smHell" class="selectpicker" title="Nada Selecionado" multiple
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                                <label for="smHell" style="color: #fff;">Filtre conteudos:</label>
+                                <select id="smHell" class="selectpicker mb-2" title="Nada Selecionado" multiple
                                     data-live-search="true" onchange="this.form.submit()" name="filtro_conteudo">
                                     <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                         <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
@@ -71,11 +71,12 @@
                             </form>
 
                         </div>
-                        <div class="container justify-content-center mb-2">
-                            <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                            <input id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
-                                class="form-control">
-
+                        <div class="container justify-content-center">
+                            <form action="/aulas/<%= usuarios.idUsuario %> / <%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;">
+                                <label for="dataAula" style="color: #fff;">Data inicial:</label>
+                                <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;" name="data"
+                                    class="form-control">
+                            </form>
                             <label for="dataAula2" style="color: #fff;">Data final:</label>
                             <input id="dataAula2" type="date" style="width: fit-content; margin:auto;" name="data2"
                                 class="form-control" placeholder="Selecione uma data">
@@ -92,7 +93,7 @@
             <div class="col-lg-12 mb-5 mb-lg-0">
 
                 <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Download"
-                    style="width: fit-content; margin-left: 80vh;">
+                    style="width: fit-content; margin: auto;">
                 <div id="scrollList" class="container d-flex justify-content-center"
                     style="height: 300px;overflow-y: auto;">
 

@@ -5,9 +5,8 @@ const usuario = require('../model/usuario')
 
 module.exports = {
     async aulas(req, res){
-        var parametro = req.headers.cookie
-        parametro = parametro.replace(/^\D+/g, '');
-        var parametro2 = req.params.materia
+        const parametro = req.params.id
+        const parametro2 = req.params.materia
 
         const usuarios = await usuario.findByPk(parametro, {
             raw: true,
@@ -37,6 +36,7 @@ module.exports = {
         })
 
         const filtro = req.body.filtro_conteudo
+        
         const competencias_necessitadas = competencias.competencias.split(',')
         const conteudos_da_materia = materias.conteudo.split(',')
 
@@ -65,6 +65,7 @@ module.exports = {
             }
         })
         
+        
         const conteudos = await conteudo.findAll({
             raw: true,
             attributes: ['idConteudo', 'conteudo', 'pasta', 'dia'],
@@ -74,6 +75,9 @@ module.exports = {
         })
 
         const filtro = req.body.filtro_conteudo
+        const filtro_dia0 = req.body.data
+
+        
         const competencias_necessitadas = competencias.competencias.split(',')
         const conteudos_da_materia = materias.conteudo.split(',')
         console.log(filtro)
