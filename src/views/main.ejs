@@ -6,52 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PortalETS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
     <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
-    <div id="nav">
-        <nav class="navbar">
-            <form action="/registro" method="get">
-                <button class="btn btn-outline-light font-weight-bold" <%= !usuarios.isAdm ? "hidden" : "" %>><b>ADM</b></button>
-            </form>
-        </nav>
-    </div>
-    <div class="d-flex justify-content-center">
-        <img class="userImg" id="<%= usuarios.idUsuario %>" src="../img/<%= usuarios.foto %>" />
-    </div>
-    <div class="container">
-        <div class="row">
-            <% for (let i=0; i<materias.length; i++) { %>
-                       <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="content">
-                            <a href="/aulas/ <%= materias[i].idMateria %>" method="get">
-                                <div class="content-overlay"></div>
-                                <img class="content-image" id="<%= materias[i].idMateria %>"
-                                    src="../img/<%= materias[i].foto %>">
-                                <div class="content-details fadeIn-bottom">
-                                    <h3 class="content-title">
-                                        <%= materias[i].materia %>
-                                    </h3>
-                                </div>
-                            </a> </div>
-                    </div>
-                <% } %>
+    <div class="area">
+
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <form action="/registro" method="get" id="absolu">
+            <button style="color: #007BFF;font-family: 'Fredoka One';" class="btn btn-outline-light font-weight-bold" <%= !usuarios.isAdm ? "hidden" : "" %>><b>ADM</b></button>
+        </form>
+        <br>
+        <h1 style="color: #007BFF;margin: auto;width: fit-content;font-weight: bolder;font-size: 50px;font-family: 'Fredoka One'">Selecione um conteúdo:</h1>
+        <div class="container">
+            <div class="row">
+                <% for (let i=0; i<materias.length; i++) { %>
+                           <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-5">
+                            <div class="content" style="box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);">
+                                <a href="/aulas/ <%= materias[i].idMateria %>" method="get">
+                                    <div class="content-overlay" style="height: 100%;"></div>
+                                    <img class="content-image" id="<%= materias[i].idMateria %>"
+                                        src="../img/<%= materias[i].foto %>">
+                                    <div class="content-details fadeIn-bottom">
+                                        <h3 class="content-title" style="color: #F1FAEE;font-weight: bolder;font-family: 'Fredoka One';">
+                                            <%= materias[i].materia %>
+                                        </h3>
+                                    </div>
+                                </a> </div>
+                        </div>
+                    <% } %>
+            </div>
         </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+            integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+    </div >
 </body>
 
 </html>

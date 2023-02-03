@@ -6,37 +6,38 @@
   <meta charset="utf-8">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body style="background: #E8E8E8;">
+<body style="background: #F1FAEE;">
  
     <div id="nav">
         <nav class="navbar">
             <form action="/return" method="post" style="margin: auto;">
-                <button type="submit" class="btn btn-outline-light font-weight-bold"><b>Menu</b></button>
+                <button type="submit" class="btn btn-outline-light font-weight-bold" style="color: #007BFF;font-family: 'Fredoka One';"><b>Menu</b></button>
             </form>
         </nav>
     </div>
     <div class="container d-flex justify-content-center align-items-center" style="width: 90%;height: 90%">
-        <button class="competencia btn btn-dark" data-bs-toggle="modal" data-bs-target="#competencia"
-        style="cursor: pointer;margin: 10px !important;">Competencia</button>
-        <button class="conteudo btn btn-dark" data-bs-toggle="modal" data-bs-target="#conteudo"
-        style="cursor: pointer;margin: 10px !important;">Conteudo</button>
-        <button class="materia btn btn-dark" data-bs-toggle="modal" data-bs-target="#materia"
-        style="cursor: pointer;margin: 10px !important;">Materia</button>
-        <button class="usuario btn btn-dark" data-bs-toggle="modal" data-bs-target="#usuario"
-        style="cursor: pointer;margin: 10px !important;">Usuario</button>
+        <button class="competencia btn btn-primary" data-bs-toggle="modal" data-bs-target="#competencia"
+        style="cursor: pointer;margin: 10px !important;box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);">Competencia</button>
+        <button class="conteudo btn btn-primary" data-bs-toggle="modal" data-bs-target="#conteudo"
+        style="cursor: pointer;margin: 10px !important;box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);">Conteudo</button>
+        <button class="materia btn btn-primary" data-bs-toggle="modal" data-bs-target="#materia"
+        style="cursor: pointer;margin: 10px !important;box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);">Materia</button>
+        <button class="usuario btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuario"
+        style="cursor: pointer;margin: 10px !important;box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);">Usuario</button>
     </div>
 
 
     <!-- MODAL COMPETENCIA -->
     <div class="modal fade" id="competencia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content" style="box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);color: #ffff;background-color: #1D3557;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar nova Competencia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" style="background-color: #ffff;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/competencia" method="post">
                     <div class="modal-body" style="display: block !important;">
@@ -62,7 +63,7 @@
                         </select>
                     
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">CADASTRAR</button>
+                            <button type="submit" class="btn btn-primary">CADASTRAR</button>
                         </div>
                     </div>
                 </form>
@@ -73,10 +74,10 @@
     <!-- MODAL CONTEUDO -->
     <div class="modal fade" id="conteudo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content" style="box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);color: #ffff;background-color: #1D3557;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar novo Conteudo</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" style="background-color: #ffff;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/conteudo" method="post" enctype="multipart/form-data">
                     <div class="modal-body" style="display: block !important;">
@@ -92,9 +93,11 @@
                         </select>
                         <label for="dia">Data</label>
                         <input type="date" style="width: 100%;" name="dia" class="form-control">
+                        <br>
                         <input type="file" id="arquivopasta" name="arquivopasta">
+                        <br>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">CADASTRAR</button>
+                            <button type="submit" class="btn btn-primary">CADASTRAR</button>
                         </div>
                     </div>
                 </form>
@@ -105,15 +108,15 @@
     <!-- MODAL MATERIA -->
     <div class="modal fade" id="materia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content" style="box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);color: #ffff;background-color: #1D3557;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar nova Materia</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" style="background-color: #ffff;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" style="display: block !important;">
                     <form action="/materia" method="post" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center">
-                            <img class="formFoto" id="materiaFoto" src="img/users/user.png">
+                            <img class="formFoto" id="materiaFoto" src="img/book.png" style="border-radius: 0%;">
                             <input type="file" id="arquivoMateria" name="foto" accept="image/*" style="display: none;">
                         </div>
                         <label for="materia">Materia</label>
@@ -121,7 +124,7 @@
                         <label for="conteudo">Conteudo</label>
                         <input style="cursor: text;width: 100%;" type="text" name="conteudo" required>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">CADASTRAR</button>
+                            <button type="submit" class="btn btn-primary">CADASTRAR</button>
                         </div>
                     </form>
                     </div>
@@ -132,15 +135,15 @@
     <!-- MODAL USUARIO -->
     <div class="modal fade" id="usuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content" style="box-shadow: 0 7px 10px rgb(0 0 0 / 0.5);color: #ffff;background-color: #1D3557;">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar novo Usuario</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" style="background-color: #ffff;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/usuario" method="post"  enctype="multipart/form-data">
                     <div class="modal-body" style="display: block !important;">
                         <div class="d-flex justify-content-center">
-                            <img class="formFoto" id="usuarioFoto" src="img/users/user.png">
+                            <img class="formFoto" id="usuarioFoto" src="img/userw.png">
                             <input type="file" id="arquivoUsuario" name="foto" accept="image/*" style="display: none;">
                         </div>
                         <label for="nome">Nome</label>
@@ -155,7 +158,7 @@
                             <option value="false">Não</option>
                         </select>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-dark">CADASTRAR</button>
+                            <button type="submit" class="btn btn-primary">CADASTRAR</button>
                         </div>
                     </div>
                 </form>
