@@ -35,7 +35,8 @@
         <div id="nav">
             <nav class="navbar">
                 <form action="/return" method="post" style="margin: auto;">
-                    <button type="submit" class="btn btn-outline-light font-weight-bold" style="color: #007BFF;font-family: 'Fredoka One';font-size: 25px;"><b>Menu</b></button>
+                    <button type="submit" class="btn btn-outline-light font-weight-bold"
+                        style="color: #007BFF;font-family: 'Fredoka One';font-size: 25px;"><b>Menu</b></button>
                 </form>
             </nav>
         </div>
@@ -53,12 +54,14 @@
                                     <h4 class="mb-2 mt-0" style="color: #F1FAEE">
                                         <%= usuarios.nome %>
                                     </h4>
-                                    <img class="mb-2 rounded" src="../../img/<%= materias.foto %>" style="height: auto;max-width: 40px;">
+                                    <img class="mb-2 rounded" src="../../img/<%= materias.foto %>"
+                                        style="height: auto;max-width: 40px;">
                                     <div class="p-2 bg-primary d-flex justify-content-center rounded text-white stats"
                                         style="color: #737A80;">
                                         <div class="d-flex flex-column">
                                             <span class="number1" style="color:#1D3557">
-                                                <%= conteudos_da_materia.length-competencias_necessitadas.length %>/<%= conteudos_da_materia.length %> |
+                                                <%= conteudos_da_materia.length-competencias_necessitadas.length %>/<%=
+                                                        conteudos_da_materia.length %> |
                                             </span>
                                         </div>
                                         <div class="d-flex flex-column">
@@ -71,37 +74,46 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="filtros p-2" style="width: fit-content;border-radius: 10px;box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);">
+                        <div class="filtros p-2"
+                            style="width: fit-content;border-radius: 10px;box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);">
 
 
                             <div class="container justify-content-center" style="margin-top: auto;margin-bottom: auto;">
                                 <label for="smHell" style="color: #fff;">Filtro de conteudos:</label>
-                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box"
+                                    class="p-2 d-flex" style="width: fit-content;margin: auto;">
                                     <select id="smHell" class="selectpicker mb-0" title="Nada Selecionado" multiple
                                         data-live-search="true" onchange="this.form.submit()" name="filtro_conteudo">
                                         <% for (let i=0; i<conteudos_da_materia.length; i++) {%>
                                             <option class="selectCompetencias" value="<%= conteudos_da_materia[i] %>"
                                                 style=<%=!(competencias_necessitadas.includes(conteudos_da_materia[i]))
-                                                ? 'color:#fff;' : 'color:#f72585;'%>
+                                                ? 'color:#fff;' : 'color:#f72585;' %>
                                                 <%= (typeof filtro !=='undefined'
-                                                    )?((filtro.includes(conteudos_da_materia[i])) ? "selected" : "" ):"" %>>
-                                                        <%= conteudos_da_materia[i] %>
+                                                    )?((filtro.includes(conteudos_da_materia[i])) ? "selected" : "" ):""
+                                                    %>>
+                                                    <%= conteudos_da_materia[i] %>
                                             </option>
                                             <% } %>
                                     </select>
                                 </form>
 
                             </div>
-                            <div class="container justify-content-center" >
+                            <div class="container justify-content-center">
                                 <label for="dataAula" style="color: #fff;">Data inicial:</label>
-                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
-                                    <input onchange="this.form.submit()" id="dataAula" type="date" style="width: fit-content; margin:auto;z-index: 3" name="data"
-                                        class="form-control" value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
+                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box"
+                                    class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                    <input onchange="this.form.submit()" id="dataAula" type="date"
+                                        style="width: fit-content; margin:auto;z-index: 3" name="data"
+                                        class="form-control"
+                                        value="<%= (typeof filtro_dia0 !== 'undefined')? filtro_dia0 : "" %>">
                                 </form>
                                 <label for="dataAula2" style="color: #fff;">Data final:</label>
-                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box" class="p-2 d-flex" style="width: fit-content;margin: auto;">
-                                    <input onchange="this.form.submit()" id="dataAula2" type="date" style="width: fit-content; margin:auto;z-index: 3;" name="data2"
-                                    class="form-control mb-2" placeholder="Selecione uma data" value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
+                                <form action="/aulas/<%= materias.idMateria %>" method="post" id="form-box"
+                                    class="p-2 d-flex" style="width: fit-content;margin: auto;">
+                                    <input onchange="this.form.submit()" id="dataAula2" type="date"
+                                        style="width: fit-content; margin:auto;z-index: 3;" name="data2"
+                                        class="form-control mb-2" placeholder="Selecione uma data"
+                                        value="<%= (typeof filtro_dia !== 'undefined')? filtro_dia : "" %>">
                                 </form>
                             </div>
 
@@ -113,37 +125,45 @@
 
                 <div class="col-lg-12 mb-5 mb-lg-0">
 
-                    <input onclick="download()" type="submit" name="submit" id="submit" class="btn btn-primary btn-block" value="Download"
-                            style="width: fit-content; margin-left: 80vh;box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);">
-                        <div id="scrollList" class="container d-flex justify-content-center"
-                            style="height: 250px;overflow-y: auto;">
+                    <input onclick="download()" type="submit" name="submit" id="submit"
+                        class="btn btn-primary btn-block" value="Download"
+                        style="width: fit-content; margin-left: 80vh;box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);">
+                    <div id="scrollList" class="container d-flex justify-content-center"
+                        style="height: 250px;overflow-y: auto;">
 
                         <ul class="list-group text-white" id="listaConteudos">
                             <% for (let i=0; i<conteudos.length; i++) { %>
                                 <div <%=(typeof filtro !=='undefined' )?((filtro.includes(conteudos[i].conteudo)) ? ""
                                     : "hidden" ):"" %>
                                     <%= (typeof filtro_dia0 !=='undefined' )?((new Date(filtro_dia0 + " GMT" ).getTime()
-                                        <=new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
-                                        + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden" ):"" %>
-                                        <%= (typeof filtro_dia !=='undefined' )?((new Date(filtro_dia + " GMT" ).getTime()>=
-                                            new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
+                                        <=new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new
+                                        Date(conteudos[i].dia + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden"
+                                        ):"" %>
+                                        <%= (typeof filtro_dia !=='undefined' )?((new Date(filtro_dia + " GMT"
+                                            ).getTime()>=
+                                            new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new
+                                            Date(conteudos[i].dia
                                             + " GMT" ).getDate() + 1))).getTime()) ? "" : "hidden" ):"" %>>
-                                            <li class="list-group-item d-flex justify-content-between rounded align-content-center">
-                                                <a id="fileFromElement" href="../../img/<%= conteudos[i].pasta %>" download></a>
+                                            <li
+                                                class="list-group-item d-flex justify-content-between rounded align-content-center">
+                                                <a id="fileFromElement" href="../../img/<%= conteudos[i].pasta %>"
+                                                    download></a>
                                                 <div class="d-flex flex-row">
-                                                    <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
+                                                    <img src="https://img.icons8.com/color/100/000000/folder-invoices.png"
+                                                        width="40" />
                                                     <div class="ml-2">
                                                         <h6 class="mb-0">
                                                             <%= conteudos[i].conteudo %>
                                                         </h6>
                                                         <div class="about">
                                                             <span>
-                                                                <% var dateObj = new Date(new Date(conteudos[i].dia + " GMT" ).setDate((new Date(conteudos[i].dia
+                                                                <% var dateObj=new Date(new Date(conteudos[i].dia
+                                                                    + " GMT" ).setDate((new Date(conteudos[i].dia
                                                                     + " GMT" ).getDate() + 1))) %>
-                                                                <% var month = dateObj.getUTCMonth() + 1; %>
-                                                                <% var day = dateObj.getUTCDate(); %>
-                                                                <% var year = dateObj.getUTCFullYear(); %>
-                                                                <%= day + "/" + month + "/" + year; %>
+                                                                    <% var month=dateObj.getUTCMonth() + 1; %>
+                                                                        <% var day=dateObj.getUTCDate(); %>
+                                                                            <% var year=dateObj.getUTCFullYear(); %>
+                                                                                <%= day + "/" + month + "/" + year; %>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -161,37 +181,35 @@
                     </div>
                 </div>
         </div>
-        </div>
-        </section>
-        </div>
+    </div>
+    </section>
+    </div>
 
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#example-getting-started').multiselect();
-            });
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example-getting-started').multiselect();
+        });
 
-            function download()
-            {
-                var allInputs = document.querySelectorAll(".checkboxInput");
-                var allFiles = document.querySelectorAll("a");
-                var input = []; 
-                var file = [];
+        function download() {
+            var allInputs = document.querySelectorAll(".checkboxInput");
+            var allFiles = document.querySelectorAll("a");
+            var input = [];
+            var file = [];
 
-                input.length = allInputs.length; 
-                file.length = input.length;
+            input.length = allInputs.length;
+            file.length = input.length;
 
-                for(var i = 0; i < allInputs.length; i++){
-                    input[i] = allInputs[i]; 
-                    file[i] = allFiles[i];
+            for (var i = 0; i < allInputs.length; i++) {
+                input[i] = allInputs[i];
+                file[i] = allFiles[i];
 
-                    if (input[i].checked)
-                    {
-                        file[i].click()
-                    }
+                if (input[i].checked) {
+                    file[i].click()
                 }
-
             }
-        </script>
+
+        }
+    </script>
     </div>
 </body>
 

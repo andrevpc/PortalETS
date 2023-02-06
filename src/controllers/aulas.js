@@ -37,6 +37,7 @@ module.exports = {
         })
 
         const filtro = req.body.filtro_conteudo
+        console.log(filtro)
         const filtro_dia0 = req.body.dia
         const filtro_dia = req.body.data2
         console.log(filtro_dia0)
